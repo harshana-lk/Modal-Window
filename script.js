@@ -1,11 +1,27 @@
 'use strict';
 
-const model = document.querySelector('.model');
+console.log(document.querySelector('.modal'));
+const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModel = document.querySelector('.close-modal');
 const btnsOpenModel = document.querySelectorAll('.show-modal');
-console.log(btnsOpenModel);
+console.log(modal);
+
+const openModel = function () {
+  console.log('Button Clicked !');
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+};
+
+const closeModel = function () {
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
+};
 
 for (let index = 0; index < btnsOpenModel.length; index++) {
-  console.log(btnsOpenModel[index].textContent);
+  btnsOpenModel[index].addEventListener('click', openModel);
 }
+
+btnCloseModel.addEventListener('click', closeModel);
+
+overlay.addEventListener('click', closeModel);
